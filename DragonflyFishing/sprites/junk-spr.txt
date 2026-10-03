@@ -1,0 +1,24 @@
+<HEADER>
+frames 4
+width 4
+height 2
+color white
+slowdown 10
+</HEADER>
+<BODY>
+(==)
+|__|
+end
+(=-)
+\__\
+end
+(==)
+|__|
+end
+(-=)
+/__/
+end
+</BODY>
+<FOOTER>
+version 1
+</FOOTER>
