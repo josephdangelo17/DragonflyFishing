@@ -1,0 +1,15 @@
+C:\Users\josep\Downloads\DragonflyFishing\x64\Debug\sfml-graphics-d-3.dll
+C:\Users\josep\Downloads\DragonflyFishing\x64\Debug\sfml-window-d-3.dll
+C:\Users\josep\Downloads\DragonflyFishing\x64\Debug\sfml-system-d-3.dll
+C:\Users\josep\Downloads\DragonflyFishing\x64\Debug\freetyped.dll
+C:\Users\josep\Downloads\DragonflyFishing\x64\Debug\zd.dll
+C:\Users\josep\Downloads\DragonflyFishing\x64\Debug\bz2d.dll
+C:\Users\josep\Downloads\DragonflyFishing\x64\Debug\libpng16d.dll
+C:\Users\josep\Downloads\DragonflyFishing\x64\Debug\brotlidec.dll
+C:\Users\josep\Downloads\DragonflyFishing\x64\Debug\brotlicommon.dll
+C:\Users\josep\Downloads\DragonflyFishing\x64\Debug\sfml-audio-d-3.dll
+C:\Users\josep\Downloads\DragonflyFishing\x64\Debug\vorbis.dll
+C:\Users\josep\Downloads\DragonflyFishing\x64\Debug\ogg.dll
+C:\Users\josep\Downloads\DragonflyFishing\x64\Debug\vorbisfile.dll
+C:\Users\josep\Downloads\DragonflyFishing\x64\Debug\vorbisenc.dll
+C:\Users\josep\Downloads\DragonflyFishing\x64\Debug\FLAC.dll
