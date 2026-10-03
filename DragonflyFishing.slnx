@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="DragonflyFishing/DragonflyFishing.vcxproj" Id="8f4b2551-74b0-4821-9882-e246c29d98ef" />
+</Solution>
