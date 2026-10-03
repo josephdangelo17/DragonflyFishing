@@ -5,6 +5,7 @@
 
 //Game includes
 #include "Fish.h"
+#include "Junk.h"
 
 //prototypes
 void loadResources(void);
@@ -43,10 +44,12 @@ int main(int argc, char* argv[]) {
 // Load all sprites (labels must match what the classes use).
 void loadResources() {
     RM.loadSprite("sprites/fish-spr.txt", "fish");
+    RM.loadSprite("sprites/junk-spr.txt", "junk");
 }
 
 // Create the starting fish.
 void populateWorld() {
+    new Junk();
     for (int i = 0; i < 6; i++)
         new Fish();
 }
