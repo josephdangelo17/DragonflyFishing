@@ -1,0 +1,26 @@
+15:55:00    0 ****************************************************
+15:55:00    0 ** Dragonfly version 4.25 **
+15:55:00    0 ** Game engine started **
+15:55:00    0 ****************************************************
+15:55:04   90 readData(): Error line 14! Expected '<FOOTER>', have ''.
+15:55:04   90 RM::loadSprite(): Sprite 'fish' NOT loaded.
+15:55:04   90 RM::getSprite(): Warning! Sprite 'fish' not found.
+15:55:04   90 Object::setSprite(): Warning! Sprite 'fish' not found
+15:55:04   90 Fish::Fish(): Warning! Sprite 'fish' not found
+15:55:04   90 RM::getSprite(): Warning! Sprite 'fish' not found.
+15:55:04   90 Object::setSprite(): Warning! Sprite 'fish' not found
+15:55:04   90 Fish::Fish(): Warning! Sprite 'fish' not found
+15:55:04   90 RM::getSprite(): Warning! Sprite 'fish' not found.
+15:55:04   90 Object::setSprite(): Warning! Sprite 'fish' not found
+15:55:04   90 Fish::Fish(): Warning! Sprite 'fish' not found
+15:55:04   90 RM::getSprite(): Warning! Sprite 'fish' not found.
+15:55:04   90 Object::setSprite(): Warning! Sprite 'fish' not found
+15:55:04   90 Fish::Fish(): Warning! Sprite 'fish' not found
+15:55:04   90 RM::getSprite(): Warning! Sprite 'fish' not found.
+15:55:04   90 Object::setSprite(): Warning! Sprite 'fish' not found
+15:55:04   90 Fish::Fish(): Warning! Sprite 'fish' not found
+15:55:04   90 RM::getSprite(): Warning! Sprite 'fish' not found.
+15:55:04   90 Object::setSprite(): Warning! Sprite 'fish' not found
+15:55:04   90 Fish::Fish(): Warning! Sprite 'fish' not found
+15:55:15  342 ****************************************************
+15:55:15  342 ** Game engine stopped **

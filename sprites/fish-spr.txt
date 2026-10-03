@@ -1,0 +1,13 @@
+<HEADER>
+frames 2
+width 4
+height 1
+color yellow
+slowdown 6
+</HEADER>
+<BODY>
+}(0)
+end
+>(0)
+end
+</BODY>
