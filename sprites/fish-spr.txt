@@ -11,3 +11,6 @@ end
 >(0)
 end
 </BODY>
+<FOOTER>
+version 1
+</FOOTER>
