@@ -1,3 +1,4 @@
+
 #include <stdlib.h>
 
 #include "Junk.h"
@@ -5,17 +6,17 @@
 #include "LogManager.h"
 #include "WorldManager.h"
 
-// Tuning values
-const int   JUNK_WATER_TOP = 6;      // first row below the waterline
-const int   JUNK_BOTTOM_PAD = 3;      // sprite is 2 rows tall, keep off bottom
-const float JUNK_MIN_SPEED = 0.15f;  // columns per game step (slower than fish)
+//Tuning values 
+const int   JUNK_WATER_TOP = 6;      //first row below the waterline
+const int   JUNK_BOTTOM_PAD = 3;      //sprite is 2 rows tall, keep off bottom
+const float JUNK_MIN_SPEED = 0.15f;  //columns per game step (slower than fish)
 const float JUNK_MAX_SPEED = 0.35f;
-const int   JUNK_MAX_COUNT = 12;     // never have more than this many at once
-const int   JUNK_PASSES_PER_SPAWN = 2; // every N junk that pass, add one more
+const int   JUNK_MAX_COUNT = 12;     //never have more than this many at once
+const int   JUNK_PASSES_PER_SPAWN = 2; //every N junk that pass, add one more
 
-// Shared by all Junk.
-static int junk_count = 0;  // how many Junk currently exist
-static int junk_passed = 0;  // how many have drifted off the right edge
+//Shared by all Junk.
+static int junk_count = 0;  //how many Junk currently exist
+static int junk_passed = 0;  //how many have drifted off the right edge
 
 Junk::Junk() {
 
@@ -54,19 +55,32 @@ void Junk::moveToStart() {
 }
 
 void Junk::out() {
-
     //Only count once past the right edge (not while in the left spawn area).
     if (getPosition().getX() < 0)
         return;
 
     junk_passed++;
 
-    //Every JUNK_PASSES_PER_SPAWN junk that go by, add one more
+    //Every JUNK_PASSES_PER_SPAWN junk that go by, add one more 
     if (junk_passed % JUNK_PASSES_PER_SPAWN == 0 && junk_count < JUNK_MAX_COUNT)
         new Junk();
 
     //Recycle this one back to the left side.
     moveToStart();
+}
+
+
+bool Junk::hit() {
+
+    //Only react once 
+    if (m_hit)
+        return false;
+    m_hit = true;
+
+    // Remove this junk and spawn a replacement off the left edge.
+    WM.markForDelete(this);
+    new Junk();
+    return true;
 }
 
 int Junk::eventHandler(const df::Event* p_e) {
@@ -75,9 +89,6 @@ int Junk::eventHandler(const df::Event* p_e) {
         out();
         return 1;
     }
-
-    //TODO: when Hook exists, handle df::COLLISION_EVENT here and check
-    //for the other object's type "Hook" to cost the player a life.
 
     return 0;
 }

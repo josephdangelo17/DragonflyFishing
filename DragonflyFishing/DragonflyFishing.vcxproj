@@ -19,7 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <VcpkgEnabled>false</VcpkgEnabled>
     <VCProjectVersion>18.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{8f4b2551-74b0-4821-9882-e246c29d98ef}</ProjectGuid>
@@ -71,9 +70,6 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Label="Vcpkg">
-    <VcpkgEnabled>false</VcpkgEnabled>
-  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -115,13 +111,12 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>   $(SolutionDir)dragonfly\include; $(SolutionDir)SFML-3.1\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>   $(SolutionDir)dragonfly\include;$(SolutionDir)SFML-3.1\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)dragonfly\lib;
-$(SolutionDir)SFML-3.1\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>   $(SolutionDir)dragonfly\lib;$(SolutionDir)SFML-3.1\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies);   libdragonfly-x64-debug.lib;sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-audio-d.lib;sfml-network-d.lib; winmm.lib;ws2_32.lib </AdditionalDependencies>
     </Link>
     <Manifest>
@@ -140,14 +135,11 @@ $(SolutionDir)SFML-3.1\lib</AdditionalLibraryDirectories>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>   $(SolutionDir)dragonfly\include; $(SolutionDir)SFML-3.1\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies);   libdragonfly-x64-release.lib;sfml-graphics.lib;sfml-window.lib;sfml-system.lib;sfml-audio.lib;sfml-network.lib; winmm.lib;ws2_32.lib </AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)dragonfly\lib;
-$(SolutionDir)SFML-3.1\lib</AdditionalLibraryDirectories>
     </Link>
     <Manifest>
       <EnableSegmentHeap>true</EnableSegmentHeap>
@@ -159,10 +151,12 @@ $(SolutionDir)SFML-3.1\lib</AdditionalLibraryDirectories>
   <ItemGroup>
     <ClCompile Include="fish.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="hook.cpp" />
     <ClCompile Include="junk.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Fish.h" />
+    <ClInclude Include="Hook.h" />
     <ClInclude Include="Junk.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
