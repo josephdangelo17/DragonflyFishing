@@ -7,10 +7,10 @@
 #include "Fish.h"
 #include "Junk.h"
 #include "Hook.h"
+#include "TitleScreen.h"
 
 //prototypes
 void loadResources(void);
-void populateWorld(void);
 
 int main(int argc, char* argv[]) {
 
@@ -30,8 +30,8 @@ int main(int argc, char* argv[]) {
     //Load game resources.
     loadResources();
 
-    //Populate game world with some objects.
-    populateWorld();
+    //Create Title Screen
+    new TitleScreen();
 
     //run the game
     GM.run();
@@ -47,12 +47,4 @@ void loadResources() {
     RM.loadSprite("sprites/fish-spr.txt", "fish");
     RM.loadSprite("sprites/junk-spr.txt", "junk");
     RM.loadSprite("sprites/hook-spr.txt", "hook");
-}
-
-//Create the starting objects
-void populateWorld() {
-    new Hook();
-    new Junk();
-    for (int i = 0; i < 6; i++)
-        new Fish();
 }
