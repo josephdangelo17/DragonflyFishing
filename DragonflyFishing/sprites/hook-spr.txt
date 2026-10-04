@@ -2,8 +2,8 @@
 frames 1
 width 1
 height 1
-color red
-slowdown 6
+color cyan
+slowdown 1
 </HEADER>
 <BODY>
 J
