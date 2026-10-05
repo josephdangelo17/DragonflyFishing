@@ -107,9 +107,6 @@ void Hook::collide(const df::EventCollision* p_e) {
 
         }
 
-        /* if (static_cast<Fish*>(p_other)->getPosition().getY() == 6) {
-            
-        } */
 
     }
 
