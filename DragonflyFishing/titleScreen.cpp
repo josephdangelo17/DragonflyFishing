@@ -5,6 +5,7 @@
 #include "Points.h"
 #include "Lives.h"
 #include "Waterline.h"
+#include "Boat.h"
 
 #include "DisplayManager.h"
 #include "EventKeyboard.h"
@@ -43,6 +44,7 @@ void TitleScreen::start() {
     new Points();
     new Lives();
     new Waterline();
+    new Boat();
 
     //Title screen is done.
     WM.markForDelete(this);

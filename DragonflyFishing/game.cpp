@@ -7,6 +7,7 @@
 #include "Fish.h"
 #include "Junk.h"
 #include "Hook.h"
+#include "Boat.h"
 #include "TitleScreen.h"
 
 //prototypes
@@ -47,4 +48,5 @@ void loadResources() {
     RM.loadSprite("sprites/fish-spr.txt", "fish");
     RM.loadSprite("sprites/junk-spr.txt", "junk");
     RM.loadSprite("sprites/hook-spr.txt", "hook");
+    RM.loadSprite("sprites/boat-spr.txt", "boat");
 }
