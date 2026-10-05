@@ -2,6 +2,7 @@
 #include "Fish.h"
 #include "Junk.h"
 #include "Hook.h"
+#include "Points.h"
 
 #include "DisplayManager.h"
 #include "EventKeyboard.h"
@@ -37,6 +38,7 @@ void TitleScreen::start() {
     for (int i = 0; i < START_JUNK; i++)
         new Junk();
     new Hook();
+    new Points();
 
     //Title screen is done.
     WM.markForDelete(this);
