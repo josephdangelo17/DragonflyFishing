@@ -1,6 +1,7 @@
 #include "Hook.h"
 #include "Fish.h"
 #include "Junk.h"
+#include "Lives.h"
 
 #include "DisplayManager.h"
 #include "EventStep.h"
@@ -9,6 +10,7 @@
 #include "WorldManager.h"
 #include "utility.h"
 #include "vector.h"
+#include "EventView.h"
 
 //Tuning values.
 const int HOOK_START_LIVES = 3;   //junk hits allowed before game over
@@ -115,6 +117,10 @@ void Hook::collide(const df::EventCollision* p_e) {
         //hit() returns true only the first time, so one can = one life.
         if (static_cast<Junk*>(p_other)->hit()) {
             m_lives--;
+
+            df::EventView ev(LIVES_STRING, -1, true);
+            WM.onEvent(&ev);
+
             LM.writeLog("Hook: hit junk! Lives left: %d", m_lives);
             if (m_lives <= 0)
                 gameOver();
