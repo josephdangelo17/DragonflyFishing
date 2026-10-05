@@ -3,6 +3,8 @@
 #include "Junk.h"
 #include "Hook.h"
 #include "Points.h"
+#include "Lives.h"
+#include "Waterline.h"
 
 #include "DisplayManager.h"
 #include "EventKeyboard.h"
@@ -39,6 +41,8 @@ void TitleScreen::start() {
         new Junk();
     new Hook();
     new Points();
+    new Lives();
+    new Waterline();
 
     //Title screen is done.
     WM.markForDelete(this);
