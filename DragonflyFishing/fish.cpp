@@ -5,6 +5,9 @@
 #include "EventCollision.h"
 #include "LogManager.h"
 #include "WorldManager.h"
+#include "EventView.h"
+#include "Points.h"
+#include "hook.h"
 
 //Tuning values 
 const int   FISH_WATER_TOP = 6;     //first row below the waterline
@@ -20,6 +23,8 @@ Fish::Fish() {
 
     setSolidness(df::SOFT);
     setAltitude(2);
+
+    m_caught = false;
 
     moveToStart();
 }
@@ -57,8 +62,12 @@ void Fish::caught() {
         return;
     m_caught = true;
 
+    df::EventView ev(POINTS_STRING, 5, true);
+    WM.onEvent(&ev);
+
     //Remove this fish and spawn a replacement off the left edge.
-    WM.markForDelete(this);
+    //WM.markForDelete(this);
+    WM.removeObject(this);
     new Fish();
 }
 

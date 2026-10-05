@@ -28,6 +28,8 @@ Hook::Hook() {
     m_lives = HOOK_START_LIVES;
     m_game_over = false;
     m_game_over_countdown = HOOK_GAME_OVER_STEPS;
+    m_fish_held = false;
+    p_fish = nullptr;
 
     //Fixed column in the middle of the screen, starting near the top.
     int world_horiz = (int)WM.getBoundary().getHorizontal();
@@ -61,6 +63,15 @@ void Hook::mouse(const df::EventMouse* p_e) {
     }
 
     WM.moveObject(this, df::Vector(getPosition().getX(), y));
+
+    //if (m_fish_held && p_fish != nullptr) {
+    //    p_fish->setPosition(getPosition());
+    //}
+
+    if ((p_e->getMouseAction() == df::CLICKED) && (p_e->getMouseButton() == df::Mouse::LEFT)) {
+        fishCaught();
+    }
+
 }
 
 void Hook::collide(const df::EventCollision* p_e) {
@@ -77,9 +88,27 @@ void Hook::collide(const df::EventCollision* p_e) {
         p_other = p_e->getObject1(); 
     }
 
+    if (p_other == nullptr) {
+        return;
+    }
+
     if (p_other->getType() == "Fish") {
-        static_cast<Fish*>(p_other)->caught();
-        LM.writeLog("Hook: caught a fish");
+
+        //static_cast<Fish*>(p_other)->caught();
+
+        if (!m_fish_held) {
+            
+            m_fish_held = true;
+            p_fish = static_cast<Fish*>(p_other);
+
+            LM.writeLog("Hook: caught a fish");
+
+        }
+
+        /* if (static_cast<Fish*>(p_other)->getPosition().getY() == 6) {
+            
+        } */
+
     }
 
     else if (p_other->getType() == "Junk") {
@@ -100,6 +129,11 @@ void Hook::gameOver() {
 }
 
 void Hook::step() {
+
+    if (m_fish_held && p_fish != nullptr) {
+        p_fish->setPosition(getPosition());
+    }
+
     //After showing "GAME OVER" for a bit, end the game.
     if (m_game_over && --m_game_over_countdown <= 0)
         GM.setGameOver(true);
@@ -123,6 +157,26 @@ int Hook::eventHandler(const df::Event* p_e) {
     }
 
     return 0;
+}
+
+void Hook::fishCaught() {
+
+    if (!m_fish_held) {
+        return;
+    }
+
+    if (p_fish == nullptr) {
+        return;
+    }
+
+    if (getPosition().getY() > HOOK_MIN_Y) {
+        return;
+    }
+
+    p_fish->caught();
+    //WM.removeObject(p_fish);
+    p_fish = nullptr;
+    m_fish_held = false;
 }
 
 int Hook::draw() {    
