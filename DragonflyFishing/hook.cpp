@@ -190,7 +190,7 @@ int Hook::draw() {
     df::Vector hook_pos = getPosition();
 
     //draw fishing line behind hook
-    for (int i = 5; i < hook_pos.getY(); i++) {
+    for (int i = 4; i < hook_pos.getY(); i++) {
         DM.drawCh(df::Vector(hook_pos.getX(), i), '|', df::COLOR_DEFAULT);
     }
 
