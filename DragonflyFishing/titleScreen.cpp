@@ -2,6 +2,8 @@
 #include "Fish.h"
 #include "Junk.h"
 #include "Hook.h"
+#include "Boat.h"
+#include "Lives.h"
 #include "Music.h"
 #include "ResourceManager.h"
 #include "DisplayManager.h"
@@ -10,7 +12,7 @@
 #include "GameManager.h"
 #include "LogManager.h"
 #include "WorldManager.h"
-#include "Boat.h"
+
 
 //How many of each to create when the game starts.
 const int START_FISH = 6;
@@ -39,6 +41,7 @@ void TitleScreen::start() {
     for (int i = 0; i < START_JUNK; i++)
         new Junk();
     new Hook();
+    new Lives();
     new Boat();
 
     //Background music while fishing (loops).
