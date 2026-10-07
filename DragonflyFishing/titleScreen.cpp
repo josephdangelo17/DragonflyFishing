@@ -2,7 +2,8 @@
 #include "Fish.h"
 #include "Junk.h"
 #include "Hook.h"
-
+#include "Music.h"
+#include "ResourceManager.h"
 #include "DisplayManager.h"
 #include "EventKeyboard.h"
 #include "EventStep.h"
@@ -37,6 +38,11 @@ void TitleScreen::start() {
     for (int i = 0; i < START_JUNK; i++)
         new Junk();
     new Hook();
+
+    //Background music while fishing (loops).
+    df::Music* p_music = RM.getMusic("background-music");
+    if (p_music != NULL)
+        p_music->play(true);
 
     //Title screen is done.
     WM.markForDelete(this);

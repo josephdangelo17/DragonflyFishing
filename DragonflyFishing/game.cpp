@@ -47,4 +47,6 @@ void loadResources() {
     RM.loadSprite("sprites/fish-spr.txt", "fish");
     RM.loadSprite("sprites/junk-spr.txt", "junk");
     RM.loadSprite("sprites/hook-spr.txt", "hook");
+    RM.loadSound("sounds/junk-hit.wav", "junk-hit");
+    RM.loadMusic("sounds/background-music.wav", "background-music");
 }

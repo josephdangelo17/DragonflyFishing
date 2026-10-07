@@ -20,6 +20,7 @@ static int junk_passed = 0;  //how many have drifted off the right edge
 
 Junk::Junk() {
 
+    
     if (setSprite("junk") != 0)
         LM.writeLog("Junk::Junk(): Warning! Sprite 'junk' not found");
 
@@ -45,16 +46,23 @@ void Junk::moveToStart() {
 
     //Random depth between waterline and bottom.
     int range = world_vert - JUNK_WATER_TOP - JUNK_BOTTOM_PAD;
+    if (range < 1) range = 1;
     float y = (float)(JUNK_WATER_TOP + rand() % range);
 
     WM.moveObject(this, df::Vector(x, y));
 
     //Random speed, always drifting right.
-    float speed = JUNK_MIN_SPEED + (JUNK_MAX_SPEED - JUNK_MIN_SPEED) * ((float)rand() / RAND_MAX);
+    float speed = JUNK_MIN_SPEED +
+        (JUNK_MAX_SPEED - JUNK_MIN_SPEED) * ((float)rand() / RAND_MAX);
     setVelocity(df::Vector(speed, 0));
 }
 
 void Junk::out() {
+
+    //Being removed (or already hit): don't count it or spawn more.
+    if (m_hit)
+        return;
+
     //Only count once past the right edge (not while in the left spawn area).
     if (getPosition().getX() < 0)
         return;
@@ -69,7 +77,6 @@ void Junk::out() {
     moveToStart();
 }
 
-
 bool Junk::hit() {
 
     //Only react once 
@@ -77,10 +84,19 @@ bool Junk::hit() {
         return false;
     m_hit = true;
 
-    // Remove this junk and spawn a replacement off the left edge.
+    //Remove this junk and spawn a replacement off the left edge.
     WM.markForDelete(this);
     new Junk();
     return true;
+}
+
+void Junk::remove() {
+    m_hit = true;  //blocks hit() and out() from doing anything more
+    WM.markForDelete(this);
+}
+
+void Junk::resetPassCount() {
+    junk_passed = 0;
 }
 
 int Junk::eventHandler(const df::Event* p_e) {
