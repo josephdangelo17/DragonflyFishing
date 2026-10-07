@@ -5,6 +5,9 @@
 #include "EventCollision.h"
 #include "LogManager.h"
 #include "WorldManager.h"
+#include "EventView.h"
+//#include "Points.h"
+#include "hook.h"
 
 //Tuning values 
 const int   FISH_WATER_TOP = 6;     //first row below the waterline
@@ -15,6 +18,8 @@ const float FISH_MAX_SPEED = 0.60f;
 Fish::Fish() {
     if (setSprite("fish") != 0)
         LM.writeLog("Fish::Fish(): Warning! Sprite 'fish' not found");
+
+    m_caught = false;
 
     setType("Fish");
 
@@ -57,8 +62,12 @@ void Fish::caught() {
         return;
     m_caught = true;
 
+    //for when points are implemented, uncomment
+    //df::EventView ev(POINTS_STRING, 5, true);
+    //WM.onEvent(&ev);
+
     //Remove this fish and spawn a replacement off the left edge.
-    WM.markForDelete(this);
+    WM.removeObject(this);
     new Fish();
 }
 

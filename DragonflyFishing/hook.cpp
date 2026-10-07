@@ -35,6 +35,8 @@ Hook::Hook() {
     m_leaving = false;
     m_done = false;
     m_game_over_countdown = HOOK_GAME_OVER_STEPS;
+    p_fish = nullptr;
+    m_fish_held = false;
 
     //Fixed column in the middle of the screen, starting near the top.
     int world_horiz = (int)WM.getBoundary().getHorizontal();
@@ -65,6 +67,10 @@ void Hook::mouse(const df::EventMouse* p_e) {
     if (y > world_vert - 1) y = (float)(world_vert - 1);
 
     WM.moveObject(this, df::Vector(getPosition().getX(), y));
+
+    if ((p_e->getMouseAction() == df::CLICKED) && (p_e->getMouseButton() == df::Mouse::LEFT)) {
+        fishCaught();
+    }
 }
 
 void Hook::keyboard(const df::EventKeyboard* p_e) {
@@ -89,8 +95,17 @@ void Hook::collide(const df::EventCollision* p_e) {
         return;
 
     if (p_other->getType() == "Fish") {
-        static_cast<Fish*>(p_other)->caught();
-        LM.writeLog("Hook: caught a fish");
+        //static_cast<Fish*>(p_other)->caught();
+
+        if (!m_fish_held) {
+
+            m_fish_held = true;
+            p_fish = static_cast<Fish*>(p_other);
+
+            LM.writeLog("Hook: caught a fish");
+
+        }
+
     }
     else if (p_other->getType() == "Junk") {
         //hit() returns true only the first time, so one can = one life.
@@ -151,6 +166,10 @@ void Hook::returnToTitle() {
 
 void Hook::step() {
 
+    if (m_fish_held && p_fish != nullptr) {
+        p_fish->setPosition(getPosition());
+    }
+
     //Count down the "GAME OVER" message.
     if (m_game_over && !m_leaving)
         m_game_over_countdown--;
@@ -185,7 +204,34 @@ int Hook::eventHandler(const df::Event* p_e) {
     return 0;
 }
 
+void Hook::fishCaught() {
+
+    if (!m_fish_held) {
+        return;
+    }
+
+    if (p_fish == nullptr) {
+        return;
+    }
+
+    if (getPosition().getY() > HOOK_MIN_Y) {
+        return;
+    }
+
+    p_fish->caught();
+    p_fish = nullptr;
+    m_fish_held = false;
+}
+
 int Hook::draw() {
+
+    df::Vector hook_pos = getPosition();
+
+    //draw fishing line behind hook
+    for (int i = 4; i < hook_pos.getY(); i++) {
+        DM.drawCh(df::Vector(hook_pos.getX(), i), '|', df::COLOR_DEFAULT);
+    }
+
     int result = df::Object::draw();
 
     if (m_game_over && !m_leaving) {
