@@ -4,6 +4,7 @@
 #include "Hook.h"
 #include "Boat.h"
 #include "Lives.h"
+#include "Points.h"
 #include "Music.h"
 #include "ResourceManager.h"
 #include "DisplayManager.h"
@@ -43,6 +44,7 @@ void TitleScreen::start() {
     new Hook();
     new Lives();
     new Boat();
+    new Points();
 
     //Background music while fishing (loops).
     df::Music* p_music = RM.getMusic("background-music");
