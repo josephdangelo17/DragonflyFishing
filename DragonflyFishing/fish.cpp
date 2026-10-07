@@ -6,7 +6,7 @@
 #include "LogManager.h"
 #include "WorldManager.h"
 #include "EventView.h"
-//#include "Points.h"
+#include "Points.h"
 #include "hook.h"
 
 //Tuning values 
@@ -62,9 +62,8 @@ void Fish::caught() {
         return;
     m_caught = true;
 
-    //for when points are implemented, uncomment
-    //df::EventView ev(POINTS_STRING, 5, true);
-    //WM.onEvent(&ev);
+    df::EventView ev(POINTS_STRING, 5, true);
+    WM.onEvent(&ev);
 
     //Remove this fish and spawn a replacement off the left edge.
     WM.removeObject(this);
