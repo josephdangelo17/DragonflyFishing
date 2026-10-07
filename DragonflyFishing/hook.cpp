@@ -2,11 +2,13 @@
 #include "Hook.h"
 #include "Fish.h"
 #include "Junk.h"
+#include "Lives.h"
 #include "TitleScreen.h"
 #include "Sound.h"
 #include "ResourceManager.h"
 #include "DisplayManager.h"
 #include "EventStep.h"
+#include "EventView.h"
 #include "LogManager.h"
 #include "ObjectList.h"
 #include "ObjectListIterator.h"
@@ -112,6 +114,10 @@ void Hook::collide(const df::EventCollision* p_e) {
         if (static_cast<Junk*>(p_other)->hit()) {
             m_lives--;
             LM.writeLog("Hook: hit junk! Lives left: %d", m_lives);
+
+            df::EventView ev(LIVES_STRING, -1, true);
+            WM.onEvent(&ev);
+
             // Clank!
             df::Sound* p_sound = RM.getSound("junk-hit");
             if (p_sound != NULL)
