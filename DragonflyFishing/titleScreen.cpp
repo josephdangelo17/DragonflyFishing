@@ -10,6 +10,7 @@
 #include "GameManager.h"
 #include "LogManager.h"
 #include "WorldManager.h"
+#include "Boat.h"
 
 //How many of each to create when the game starts.
 const int START_FISH = 6;
@@ -38,6 +39,7 @@ void TitleScreen::start() {
     for (int i = 0; i < START_JUNK; i++)
         new Junk();
     new Hook();
+    new Boat();
 
     //Background music while fishing (loops).
     df::Music* p_music = RM.getMusic("background-music");
