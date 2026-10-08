@@ -163,8 +163,6 @@ void Hook::returnToTitle() {
     for (ji.first(); !ji.isDone(); ji.next())
         static_cast<Junk*>(ji.currentObject())->remove();
 
-    //WM.markForDelete()
-
     //Remove the hook itself.
     WM.markForDelete(this);
 
