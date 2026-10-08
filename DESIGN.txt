@@ -1,0 +1,5 @@
+See our original plan document for necessary details.
+
+Overall, we did not have to deviate from our original plan very much to get the game in its finished state. We got most of the game implemented by the alpha submission, including the title screen which was originally supposed to be in just the final. For the final submission, all that was really left was fine tuning certain game aspects, getting sound and music, and finally background art. 
+
+We took turns submitting major assignments. This was agreed upon as Joseph had to give his ID2050 presentation on the day the alpha was due, so it was agreed Kelsey would submit the alpha and Joseph the final. 

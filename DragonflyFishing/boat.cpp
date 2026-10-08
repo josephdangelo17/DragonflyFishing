@@ -6,7 +6,7 @@ Boat::Boat() {
 
 	setSprite("boat");
 
-	setAltitude(5);
+	setAltitude(4);
 
 	setPosition(df::Vector(40, 2));
 

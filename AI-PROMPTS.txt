@@ -1,0 +1,3 @@
+Prompt 1: Here is my code for the game I am currently working on, write a comprehensive test-suite containing a happy path, edge cases, and error cases for every class in the game.
+
+Prompt 2: Ensure that when a player exits the game before a game over, none of the points or other information carry over to next game. 

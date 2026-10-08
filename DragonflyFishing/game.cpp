@@ -51,4 +51,5 @@ void loadResources() {
     RM.loadSprite("sprites/seaweed-spr.txt", "seaweed");
     RM.loadSound("sounds/junk-hit.wav", "junk-hit");
     RM.loadMusic("sounds/background-music.wav", "background-music");
-}
+    RM.loadSound("sounds/point.wav", "point");
+} 

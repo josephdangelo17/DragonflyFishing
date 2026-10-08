@@ -156,6 +156,7 @@
     <ClCompile Include="junk.cpp" />
     <ClCompile Include="Lives.cpp" />
     <ClCompile Include="points.cpp" />
+    <ClCompile Include="TEST_SUITE.cpp" />
     <ClCompile Include="seaweed.cpp" />
     <ClCompile Include="titleScreen.cpp" />
     <ClCompile Include="waterline.cpp" />

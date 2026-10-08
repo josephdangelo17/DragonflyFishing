@@ -4,6 +4,7 @@
 #include "LogManager.h"
 
 Lives::Lives() {
+	setType("Lives");
 
 	// start with 3 lives
 	m_lives = 3;

@@ -1,5 +1,5 @@
 #include <stdlib.h>
-
+#include "ResourceManager.h"
 #include "Fish.h"
 #include "EventOut.h"
 #include "EventCollision.h"
@@ -62,6 +62,11 @@ void Fish::caught() {
         return;
     m_caught = true;
 
+    df::Sound* p_sound = RM.getSound("point");
+    if (p_sound != NULL)
+        p_sound->play();
+
+   
     df::EventView ev(POINTS_STRING, 5, true);
     WM.onEvent(&ev);
 

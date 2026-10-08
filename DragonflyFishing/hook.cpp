@@ -18,7 +18,7 @@
 //Tuning values
 const int HOOK_START_LIVES = 3;   //junk hits allowed before game over
 const int HOOK_MIN_Y = 4;   //highest row the hook can reach
-const int HOOK_GAME_OVER_STEPS = 90;  
+const int HOOK_GAME_OVER_STEPS = 90;
 
 Hook::Hook() {
 
@@ -118,7 +118,6 @@ void Hook::collide(const df::EventCollision* p_e) {
             df::EventView ev(LIVES_STRING, -1, true);
             WM.onEvent(&ev);
 
-            // Clank!
             df::Sound* p_sound = RM.getSound("junk-hit");
             if (p_sound != NULL)
                 p_sound->play();
@@ -162,6 +161,16 @@ void Hook::returnToTitle() {
     df::ObjectListIterator ji(&junk);
     for (ji.first(); !ji.isDone(); ji.next())
         static_cast<Junk*>(ji.currentObject())->remove();
+
+
+    //Remove the scenery and score/lives displays so the next game starts clean.
+    const char* leftovers[] = { "Waterline", "Boat", "Points", "Lives" };
+    for (int k = 0; k < 4; k++) {
+        df::ObjectList extras = WM.objectsOfType(leftovers[k]);
+        df::ObjectListIterator ei(&extras);
+        for (ei.first(); !ei.isDone(); ei.next())
+            WM.markForDelete(ei.currentObject());
+    }
 
     //Remove the hook itself.
     WM.markForDelete(this);

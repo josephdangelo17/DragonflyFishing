@@ -2,6 +2,7 @@
 
 Points::Points() {
 
+	setType("Points");
 	setLocation(df::TOP_LEFT);
 	setViewString(POINTS_STRING);
 	setColor(df::MAGENTA);
