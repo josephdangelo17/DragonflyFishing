@@ -130,7 +130,7 @@ int TitleScreen::draw() {
     df::Justification L = df::LEFT_JUSTIFIED;
     line(x, 16, "Mouse  :  move the hook up / down", L, df::WHITE);
     line(x, 17, "SPACE  :  start the game", L, df::WHITE);
-    line(x, 18, "Right Click  :  score fish", L, df::WHITE);
+    line(x, 18, "Left Click  :  score fish", L, df::WHITE);
     line(x, 19, "Q      :  quit", L, df::WHITE);
     
 
