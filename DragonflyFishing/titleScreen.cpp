@@ -19,7 +19,7 @@
 
 //How many of each to create when the game starts.
 const int START_FISH = 6;
-const int START_JUNK = 1;   //more spawn as junk drifts past
+const int START_JUNK = 2;   //more spawn as junk drifts past
 const int BGAMOUNT = 7;      //number of backgrount elements
 
 const int BLINK_STEPS = 15; //prompt toggles every ~0.5 seconds

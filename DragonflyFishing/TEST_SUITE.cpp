@@ -48,7 +48,7 @@ static int g_tests_passed = 0;
 // these mirror the tuning constants in the game's .cpp files; if a
 // constant is changed in the game, update it here too
 static const int T_START_FISH = 6;       // titleScreen.cpp  START_FISH
-static const int T_START_JUNK = 1;       // titleScreen.cpp  START_JUNK
+static const int T_START_JUNK = 2;       // titleScreen.cpp  START_JUNK
 static const int T_START_LIVES = 3;      // hook.cpp         HOOK_START_LIVES
 static const int T_HOOK_MIN_Y = 4;       // hook.cpp         HOOK_MIN_Y
 static const int T_GAME_OVER_STEPS = 90; // hook.cpp         HOOK_GAME_OVER_STEPS
@@ -1331,7 +1331,6 @@ static void testRestartEngine() {
 // ======================================================================
 // main
 // ======================================================================
-
 /*
 int main(int argc, char* argv[]) {
 	printf("Dragonfly Fishing Test Suite\n");
