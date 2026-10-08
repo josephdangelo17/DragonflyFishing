@@ -6,6 +6,7 @@
 #include "Lives.h"
 #include "Points.h"
 #include "Waterline.h"
+#include "Seaweed.h"
 #include "Music.h"
 #include "ResourceManager.h"
 #include "DisplayManager.h"
@@ -19,6 +20,7 @@
 //How many of each to create when the game starts.
 const int START_FISH = 6;
 const int START_JUNK = 1;   //more spawn as junk drifts past
+const int BGAMOUNT = 7;      //number of backgrount elements
 
 const int BLINK_STEPS = 15; //prompt toggles every ~0.5 seconds
 
@@ -47,6 +49,8 @@ void TitleScreen::start() {
     new Boat();
     new Points();
     new Lives();
+    for (int i = 0; i < BGAMOUNT; i++)
+        new Seaweed();
 
     //Background music while fishing (loops).
     df::Music* p_music = RM.getMusic("background-music");
