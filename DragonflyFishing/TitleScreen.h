@@ -11,6 +11,8 @@ class TitleScreen : public df::Object {
 private:
 	int m_steps;  //step counter, used to blink the "press SPACE" prompt
 
+	bool m_started = false;  //true once start() has run (only start once)
+
 	//Create the game objects and remove the title screen.
 	void start();
 

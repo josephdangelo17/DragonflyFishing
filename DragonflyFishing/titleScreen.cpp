@@ -18,7 +18,7 @@
 
 //How many of each to create when the game starts.
 const int START_FISH = 6;
-const int START_JUNK = 1;   //more spawn as junk drifts past
+const int START_JUNK = 2;   //more spawn as junk drifts past
 
 const int BLINK_STEPS = 15; //prompt toggles every ~0.5 seconds
 
@@ -37,6 +37,14 @@ TitleScreen::TitleScreen() {
 }
 
 void TitleScreen::start() {
+
+    //Ignore repeat SPACE presses before this title screen is deleted.
+    if (m_started)
+        return;
+    m_started = true;
+
+    //New game: restart the junk difficulty ramp.
+    Junk::resetPassCount();
 
     for (int i = 0; i < START_FISH; i++)
         new Fish();
@@ -118,11 +126,13 @@ int TitleScreen::draw() {
     df::Justification L = df::LEFT_JUSTIFIED;
     line(x, 16, "Mouse  :  move the hook up / down", L, df::WHITE);
     line(x, 17, "SPACE  :  start the game", L, df::WHITE);
-    line(x, 18, "Q      :  quit", L, df::WHITE);
+    line(x, 18, "Right Click  :  score fish", L, df::WHITE);
+    line(x, 19, "Q      :  quit", L, df::WHITE);
+    
 
     //Blinking prompt.
     if ((m_steps / BLINK_STEPS) % 2 == 0)
-        line(cx, 20, "Press SPACE to play", C, df::YELLOW);
+        line(cx, 21, "Press SPACE to play", C, df::YELLOW);
 
     line(cx, 22, "Kelsey Bishqemi & Joseph D'Angelo  -  IMGD 3000", C, df::CYAN);
 
