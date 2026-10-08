@@ -164,8 +164,8 @@ void Hook::returnToTitle() {
 
 
     //Remove the scenery and score/lives displays so the next game starts clean.
-    const char* leftovers[] = { "Waterline", "Boat", "Points", "Lives" };
-    for (int k = 0; k < 4; k++) {
+    const char* leftovers[] = { "Waterline", "Boat", "Points", "Lives", "Seaweed" };
+    for (int k = 0; k < 5; k++) {
         df::ObjectList extras = WM.objectsOfType(leftovers[k]);
         df::ObjectListIterator ei(&extras);
         for (ei.first(); !ei.isDone(); ei.next())
