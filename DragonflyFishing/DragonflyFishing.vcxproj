@@ -149,17 +149,27 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="boat.cpp" />
     <ClCompile Include="fish.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="hook.cpp" />
     <ClCompile Include="junk.cpp" />
+    <ClCompile Include="Lives.cpp" />
+    <ClCompile Include="points.cpp" />
+    <ClCompile Include="seaweed.cpp" />
     <ClCompile Include="titleScreen.cpp" />
+    <ClCompile Include="waterline.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Boat.h" />
     <ClInclude Include="Fish.h" />
     <ClInclude Include="Hook.h" />
     <ClInclude Include="Junk.h" />
+    <ClInclude Include="Lives.h" />
+    <ClInclude Include="Points.h" />
+    <ClInclude Include="Seaweed.h" />
     <ClInclude Include="TitleScreen.h" />
+    <ClInclude Include="Waterline.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
